@@ -13,12 +13,12 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t my_python_ecr .
-      - docker tag my_python_ecr:latest 038269871983.dkr.ecr.us-east-2.amazonaws.com/my_python_ecr:1.0.1
+      - docker tag my_python_ecr:latest 038269871983.dkr.ecr.us-east-2.amazonaws.com/my_python_ecr:1.1.1
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 038269871983.dkr.ecr.us-east-2.amazonaws.com/my_python_ecr:1.0.1
+      - docker push 038269871983.dkr.ecr.us-east-2.amazonaws.com/my_python_ecr:1.1.1
       - echo Writing image definitions file...
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
